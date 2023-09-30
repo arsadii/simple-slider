@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+nav {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.781);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+   
+}
+
+nav ul li a.active {
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    bottom: 0;
+    transition: all 500ms;
+}
+
+nav ul li a.active::before, nav ul li a:hover::before  {
+    width: 70%;
+}
+
+.slider-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+.slider-item {
+    width: 100vw;
+    height: 100vh;
+    isolation: isolate;
+    position: absolute;
+    transition: opacity 3000ms, z-index 3000ms;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.slider-item .slider-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    position: relative;
+}
+
+.slider-item .slider-content * {
+    color: white;
+}
+
+.slider-item[data-show="hidden"] {
+    opacity: 0;
+    z-index: -1;
+}
+.slider-item[data-show="show"] {
+    opacity: 1;
+    z-index: 0;
+}
+
+.slider-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to top, black, rgba(0, 0, 0, 0.623), transparent);
+    z-index: -1;
+}
+
+.slider-content .slider-title {
+    text-transform: capitalize;
+    font-size: 6rem;
+}
+
+.slider-content .slider-description {
+    line-height: 2;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 50ch;
+}
+
+.slider-content .action-btn {
+    border: 1px solid white;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    transition: all 500ms;
+}
+
+.slider-content .action-btn::before {
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: 0;
+    inset: 0;
+    z-index: -1;
+    transition: all 500ms;
+}
+
+.slider-content .action-btn:hover {
+   color: black;
+}
+
+.slider-content .action-btn:hover::before {
+    width: 100%;
+}
